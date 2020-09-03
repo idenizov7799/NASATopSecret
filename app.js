@@ -1,9 +1,20 @@
+"use strict"; 
+let map;
 
+function initMap(_lat, _lng) {
+    console.log('Map init');
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: {
+      lat: _lat,
+      lng: _lng
+    },
+    zoom: 8
+  });
+}
 
 var addListItem = function(obj){
     var html, newHtml, element;
-    // Create HTML string with placeholder text
-    
+    // Create HTML string with placeholder text    
         element = '.income__list';
         html = `<div class="item clearfix" id="income-%id%"> 
                     <div class="item__description">%description%</div>                    
@@ -14,8 +25,7 @@ var addListItem = function(obj){
 
     // Insert the HTML into the DOM
     // https://developer.mozilla.org/en-US/docs/Web/API/element/insertAdjacentHTML
-    document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
-    
+    document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);  
 
 };
 
@@ -41,12 +51,11 @@ function startUI(data){
         var obj = {
             description: key.toUpperCase() + ' - ' + data[key]
         }
-        addListItem(obj)
-        
-        
+        addListItem(obj)    
     }
+    initMap(data['latitude'], data['longitude']);
+}
 
-} 
 
 var dispayHiddenElements = function(){
     document.querySelectorAll(".uiDisplay").forEach((el) => {
@@ -70,7 +79,6 @@ var controller = (function(){
         });
     };   
 
-
     return{
         init: function(){
             console.log('App has started');
@@ -79,16 +87,8 @@ var controller = (function(){
                 
                 setupEventListeners();
             };
-            //getClientIP();
-            
-           
-            
         }
     }
 })();
 
 controller.init();
-
-
-
-

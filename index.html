@@ -8,12 +8,17 @@
         <title>NASA Top Secret</title>
     </head>
     <body>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPJpjD-qcR_yIxJnS8maR5W9KB0E3EzYI&callback=initMap&libraries=&v=weekly"
+          defer
+        ></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="app.js"></script>
         <div class="top">
             <div class="budget uiDisplay">
                 <div class="budget__title">
-                    Tiny Bolt Owner
+                    <h1>Tiny Bolt Owner</h1>
                 </div>
                 
                 <div class="budget__value">FOUND</div>
@@ -80,7 +85,7 @@
                 
                 <div class="expenses uiDisplay">
                     <h2 class="expenses__title">Triangulation in process...</h2>
-                    
+                    <div id="map"></div>
                     
                 </div>
             </div>
